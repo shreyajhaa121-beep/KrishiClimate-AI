@@ -318,9 +318,17 @@ let actionText =
         
 if (riskLevel === "HIGH") {
 
-    if (soil === "clay") {
+    if (soil === "clay" && irrigation === "limited") {
+        actionText =
+            "Heavy rainfall is expected. Clay soil can retain more water, so check field drainage carefully, avoid unnecessary irrigation, and conserve available water.";
+    }
+    else if (soil === "clay") {
         actionText =
             "Heavy rainfall is expected. Clay soil can retain more water, so check field drainage before the rainfall period and monitor closely for waterlogging.";
+    }
+    else if (soil === "sandy" && irrigation === "rain-dependent") {
+        actionText =
+            "Heavy rainfall is expected. Monitor field moisture and drainage conditions, and avoid additional irrigation while rainfall is providing water to the crop.";
     }
     else if (soil === "sandy") {
         actionText =
@@ -330,9 +338,17 @@ if (riskLevel === "HIGH") {
         actionText =
             "Heavy rainfall is expected. Monitor field moisture and drainage conditions and avoid unnecessary irrigation.";
     }
+    else if (cropStage === "flowering") {
+        actionText =
+            "Heavy rainfall is expected during the flowering stage. Check field drainage before the rainfall period and monitor the crop closely for excess moisture.";
+    }
+    else if (cropStage === "vegetative") {
+        actionText =
+            "Heavy rainfall is expected during the vegetative stage. Check field drainage before the rainfall period and avoid unnecessary irrigation if the field is already adequately moist.";
+    }
     else {
         actionText =
-            "Heavy rainfall is expected. Check field drainage and avoid unnecessary irrigation while monitoring field moisture.";
+            "Heavy rainfall is expected. Check field drainage before the rainfall period and avoid unnecessary irrigation while monitoring field moisture.";
     }
 
 }
