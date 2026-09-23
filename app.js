@@ -446,6 +446,57 @@ else if (riskLevel === "MODERATE" && irrigation === "limited") {
 
 recommendedAction.textContent = actionText;
 
+        // Step 5J: Action Priority
+let doNowText =
+    "Check the field condition and follow the latest weather signal.";
+
+let monitorText =
+    "Monitor rainfall, soil moisture, and crop condition.";
+
+let avoidText =
+    "Avoid unnecessary irrigation or other actions when the field already has sufficient moisture.";
+
+if (riskLevel === "HIGH") {
+
+    doNowText =
+        "Check field drainage and prepare for the expected heavy rainfall.";
+
+    monitorText =
+        "Monitor field moisture, standing water, and crop condition closely.";
+
+    avoidText =
+        "Avoid unnecessary irrigation while heavy rainfall is expected.";
+
+}
+else if (riskLevel === "MODERATE") {
+
+    doNowText =
+        "Check the field condition and review the upcoming rainfall signal before making irrigation decisions.";
+
+    monitorText =
+        "Monitor soil moisture, rainfall, and crop condition.";
+
+    avoidText =
+        "Avoid unnecessary irrigation when sufficient moisture is already available.";
+
+}
+else {
+
+    doNowText =
+        "Continue normal field monitoring and check the upcoming weather forecast.";
+
+    monitorText =
+        "Monitor rainfall, soil moisture, and crop condition.";
+
+    avoidText =
+        "Avoid making irrigation decisions without checking current field conditions and rainfall forecasts.";
+
+}
+
+doNowAction.textContent = doNowText;
+monitorAction.textContent = monitorText;
+avoidAction.textContent = avoidText;
+        
 
         weatherTemperature.textContent =
             todayTemperature + " °C";
