@@ -224,8 +224,7 @@ analyzeButton.addEventListener("click", async function () {
 
         const todayProbability =
             daily.precipitation_probability_max[0];
-
-        const forecastMaxRainfall =
+ const forecastMaxRainfall =
     Math.max(...daily.precipitation_sum);
 
 const forecastMaxProbability =
