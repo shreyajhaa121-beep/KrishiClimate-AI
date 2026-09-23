@@ -225,6 +225,31 @@ analyzeButton.addEventListener("click", async function () {
         const todayProbability =
             daily.precipitation_probability_max[0];
 
+        // ------------------------------
+// DYNAMIC CLIMATE RISK ENGINE
+// ------------------------------
+
+let riskLevel = "LOW";
+let riskReason = "No major climate signal detected.";
+
+if (todayRainfall >= 20 && todayProbability >= 70) {
+    riskLevel = "HIGH";
+    riskReason = "High rainfall signal detected. Monitor the field for excess water and drainage conditions.";
+} 
+else if (todayRainfall >= 10 && todayProbability >= 60) {
+    riskLevel = "MODERATE";
+    riskReason = "Moderate-to-high rainfall signal detected. Monitor field moisture and upcoming rainfall.";
+} 
+else if (irrigation === "limited" && todayRainfall < 5) {
+    riskLevel = "MODERATE";
+    riskReason = "Limited irrigation availability combined with low rainfall may increase water stress.";
+}
+        const riskLevelElement = document.querySelector(".risk-level");
+const riskDescriptionElement = document.querySelector(".risk-card p");
+
+riskLevelElement.textContent = riskLevel;
+riskDescriptionElement.textContent = riskReason;
+
 
         weatherTemperature.textContent =
             todayTemperature + " °C";
