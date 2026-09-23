@@ -25,107 +25,305 @@
     </header>
 
 
-    <!-- HERO SECTION -->
     <main>
 
-        <section class="hero">
+        <!-- LANDING PAGE -->
+        <section id="landingPage">
 
-            <div class="hero-text">
+            <section class="hero">
 
-                <p class="tagline">
-                    CLIMATE-SMART FARMING
-                </p>
+                <div class="hero-text">
 
-                <h1>
-                    Make smarter decisions
-                    for your farm.
-                </h1>
+                    <p class="tagline">
+                        CLIMATE-SMART FARMING
+                    </p>
 
-                <p class="hero-description">
-                    KrishiClimate AI turns climate signals and
-                    crop information into simple, explainable
-                    farm decisions.
-                </p>
+                    <h1>
+                        Make smarter decisions
+                        for your farm.
+                    </h1>
 
-                <button id="startButton">
-                    Get Started →
-                </button>
+                    <p class="hero-description">
+                        KrishiClimate AI turns climate signals and
+                        crop information into simple, explainable
+                        farm decisions.
+                    </p>
 
-            </div>
+                    <button id="startButton">
+                        Get Started →
+                    </button>
 
-
-            <div class="hero-card">
-
-                <div class="crop-icon">
-                    🌾
                 </div>
+
+
+                <div class="hero-card">
+
+                    <div class="crop-icon">
+                        🌾
+                    </div>
+
+                    <h2>
+                        Rice • Bihar
+                    </h2>
+
+                    <p>
+                        Climate Decision Support
+                    </p>
+
+                    <div class="mini-status">
+                        <span>🌧️ Rain Risk</span>
+                        <span>💧 Water Risk</span>
+                        <span>☀️ Heat Risk</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FEATURES -->
+            <section class="features">
 
                 <h2>
-                    Rice • Bihar
+                    From Climate Data to Farm Action
                 </h2>
 
-                <p>
-                    Climate Decision Support
-                </p>
+                <div class="feature-grid">
 
-                <div class="mini-status">
-                    <span>🌧️ Rain Risk</span>
-                    <span>💧 Water Risk</span>
-                    <span>☀️ Heat Risk</span>
+                    <div class="feature-card">
+                        <div>🌦️</div>
+                        <h3>Climate Signals</h3>
+                        <p>
+                            Monitor important weather
+                            conditions affecting the crop.
+                        </p>
+                    </div>
+
+
+                    <div class="feature-card">
+                        <div>⚠️</div>
+                        <h3>Risk Detection</h3>
+                        <p>
+                            Identify potential heat,
+                            rainfall and water risks.
+                        </p>
+                    </div>
+
+
+                    <div class="feature-card">
+                        <div>🎯</div>
+                        <h3>Farm Decisions</h3>
+                        <p>
+                            Convert climate signals into
+                            explainable decisions.
+                        </p>
+                    </div>
+
+
+                    <div class="feature-card">
+                        <div>📊</div>
+                        <h3>Impact Tracking</h3>
+                        <p>
+                            Record actions and track
+                            resource-use outcomes.
+                        </p>
+                    </div>
+
                 </div>
 
-            </div>
+            </section>
 
         </section>
 
 
-        <!-- FEATURES -->
-        <section class="features">
+        <!-- FARMER PROFILE -->
+        <section id="profilePage" class="profile-page">
 
-            <h2>
-                From Climate Data to Farm Action
-            </h2>
+            <div class="profile-container">
 
-            <div class="feature-grid">
+                <p class="tagline">
+                    FARM SETUP
+                </p>
 
-                <div class="feature-card">
-                    <div>🌦️</div>
-                    <h3>Climate Signals</h3>
-                    <p>
-                        Monitor important weather
-                        conditions affecting the crop.
-                    </p>
-                </div>
+                <h1>
+                    🌾 Set Up Your Farm
+                </h1>
 
-
-                <div class="feature-card">
-                    <div>⚠️</div>
-                    <h3>Risk Detection</h3>
-                    <p>
-                        Identify potential heat,
-                        rainfall and water risks.
-                    </p>
-                </div>
+                <p class="profile-description">
+                    Tell us a little about your farm so we can
+                    provide more relevant climate-risk insights.
+                </p>
 
 
-                <div class="feature-card">
-                    <div>🎯</div>
-                    <h3>Farm Decisions</h3>
-                    <p>
-                        Convert climate signals into
-                        explainable decisions.
-                    </p>
-                </div>
+                <form id="farmForm">
+
+                    <!-- LOCATION -->
+                    <div class="form-group">
+
+                        <label for="district">
+                            📍 District
+                        </label>
+
+                        <input
+                            type="text"
+                            id="district"
+                            placeholder="e.g. Patna"
+                            required
+                        >
+
+                    </div>
 
 
-                <div class="feature-card">
-                    <div>📊</div>
-                    <h3>Impact Tracking</h3>
-                    <p>
-                        Record actions and track
-                        resource-use outcomes.
-                    </p>
-                </div>
+                    <!-- VILLAGE -->
+                    <div class="form-group">
+
+                        <label for="village">
+                            🏘️ Village / Block
+                        </label>
+
+                        <input
+                            type="text"
+                            id="village"
+                            placeholder="Enter village or block"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- CROP -->
+                    <div class="form-group">
+
+                        <label for="crop">
+                            🌾 Crop
+                        </label>
+
+                        <select id="crop">
+
+                            <option value="rice">
+                                Rice
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- CROP STAGE -->
+                    <div class="form-group">
+
+                        <label for="cropStage">
+                            🌱 Crop Growth Stage
+                        </label>
+
+                        <select id="cropStage">
+
+                            <option value="">
+                                Select crop stage
+                            </option>
+
+                            <option value="nursery">
+                                Nursery
+                            </option>
+
+                            <option value="transplanting">
+                                Transplanting
+                            </option>
+
+                            <option value="vegetative">
+                                Vegetative
+                            </option>
+
+                            <option value="flowering">
+                                Flowering
+                            </option>
+
+                            <option value="grain-filling">
+                                Grain Filling
+                            </option>
+
+                            <option value="harvest">
+                                Harvest
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- IRRIGATION -->
+                    <div class="form-group">
+
+                        <label for="irrigation">
+                            💧 Irrigation Availability
+                        </label>
+
+                        <select id="irrigation">
+
+                            <option value="">
+                                Select availability
+                            </option>
+
+                            <option value="available">
+                                Available
+                            </option>
+
+                            <option value="limited">
+                                Limited
+                            </option>
+
+                            <option value="rain-dependent">
+                                Rain-dependent
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- SOIL -->
+                    <div class="form-group">
+
+                        <label for="soil">
+                            🪨 Soil Information
+                            <span>(Optional)</span>
+                        </label>
+
+                        <select id="soil">
+
+                            <option value="">
+                                Select soil type
+                            </option>
+
+                            <option value="clay">
+                                Clay
+                            </option>
+
+                            <option value="loam">
+                                Loam
+                            </option>
+
+                            <option value="sandy">
+                                Sandy
+                            </option>
+
+                            <option value="unknown">
+                                I don't know
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        id="analyzeButton"
+                    >
+                        Analyze My Farm →
+                    </button>
+
+                </form>
 
             </div>
 
@@ -134,7 +332,6 @@
     </main>
 
 
-    <!-- FOOTER -->
     <footer>
 
         <p>
