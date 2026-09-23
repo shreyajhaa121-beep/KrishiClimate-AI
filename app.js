@@ -318,7 +318,15 @@ let actionText =
         
 if (riskLevel === "HIGH") {
 
-    if (cropStage === "flowering") {
+    if (irrigation === "limited") {
+        actionText =
+            "Heavy rainfall is expected. Check field drainage and avoid unnecessary irrigation. Conserve available water and monitor the field for waterlogging.";
+    }
+    else if (irrigation === "rain-dependent") {
+        actionText =
+            "Heavy rainfall is expected. Monitor field drainage and avoid additional irrigation while rainfall is providing water to the crop.";
+    }
+    else if (cropStage === "flowering") {
         actionText =
             "Heavy rainfall is expected during the flowering stage. Check field drainage before the rainfall period and monitor the crop closely for excess moisture.";
     }
