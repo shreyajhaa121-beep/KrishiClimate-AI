@@ -496,6 +496,55 @@ else {
 doNowAction.textContent = doNowText;
 monitorAction.textContent = monitorText;
 avoidAction.textContent = avoidText;
+
+        // Step 5K: Farmer Action Tracker
+
+const actionDrainage =
+    document.getElementById("actionDrainage");
+
+const actionMoisture =
+    document.getElementById("actionMoisture");
+
+const actionIrrigation =
+    document.getElementById("actionIrrigation");
+
+const actionProgress =
+    document.getElementById("actionProgress");
+
+function updateActionProgress() {
+
+    let completed = 0;
+
+    if (actionDrainage.checked) {
+        completed++;
+    }
+
+    if (actionMoisture.checked) {
+        completed++;
+    }
+
+    if (actionIrrigation.checked) {
+        completed++;
+    }
+
+    actionProgress.textContent =
+        completed + "/3 actions completed";
+}
+
+actionDrainage.addEventListener(
+    "change",
+    updateActionProgress
+);
+
+actionMoisture.addEventListener(
+    "change",
+    updateActionProgress
+);
+
+actionIrrigation.addEventListener(
+    "change",
+    updateActionProgress
+);
         
 
         weatherTemperature.textContent =
