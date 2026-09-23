@@ -386,6 +386,15 @@ riskDescriptionElement.textContent = riskReason;
 const recommendedAction =
     document.getElementById("recommendedAction");
 
+        const doNowAction =
+    document.getElementById("doNowAction");
+
+const monitorAction =
+    document.getElementById("monitorAction");
+
+const avoidAction =
+    document.getElementById("avoidAction");
+
 let actionText =
     "Monitor field conditions and upcoming weather before making irrigation decisions.";
         
