@@ -238,7 +238,10 @@ const forecastMaxProbability =
 let riskLevel = "LOW";
 let riskReason = "No major climate signal detected.";
 
- if (todayRainfall >= 20 && todayProbability >= 70) {
+ if (
+    (todayRainfall >= 20 && todayProbability >= 70) ||
+    (forecastMaxRainfall >= 20 && forecastMaxProbability >= 70)
+) {
     riskLevel = "HIGH";
     riskReason =
         "High rainfall signal detected. Monitor the field for excess water and drainage conditions.";
