@@ -315,11 +315,24 @@ const recommendedAction =
 
 let actionText =
     "Monitor field conditions and upcoming weather before making irrigation decisions.";
-
+        
 if (riskLevel === "HIGH") {
-    actionText =
-        "Heavy rainfall is expected. Check field drainage before the rainfall period and avoid unnecessary irrigation if the field is already adequately moist.";
+
+    if (cropStage === "flowering") {
+        actionText =
+            "Heavy rainfall is expected during the flowering stage. Check field drainage before the rainfall period and monitor the crop closely for excess moisture.";
+    }
+    else if (cropStage === "vegetative") {
+        actionText =
+            "Heavy rainfall is expected during the vegetative stage. Check field drainage before the rainfall period and avoid unnecessary irrigation if the field is already adequately moist.";
+    }
+    else {
+        actionText =
+            "Heavy rainfall is expected. Check field drainage before the rainfall period and avoid unnecessary irrigation if the field is already adequately moist.";
+    }
+
 }
+
 else if (riskLevel === "MODERATE" && todayRainfall >= 10) {
     actionText =
         "Rainfall signal is elevated. Monitor field moisture and drainage conditions before adding irrigation.";
