@@ -244,10 +244,13 @@ else if (irrigation === "limited" && todayRainfall < 5) {
     riskLevel = "MODERATE";
     riskReason = "Limited irrigation availability combined with low rainfall may increase water stress.";
 }
-        const riskLevelElement = document.querySelector(".risk-level");
-const riskDescriptionElement = document.querySelector(".risk-card p");
+        const riskLevelElement =
+    document.getElementById("riskLevel");
 
+const riskDescriptionElement =
+    document.getElementById("riskReason");
 riskLevelElement.textContent = riskLevel;
+        
 riskDescriptionElement.textContent = riskReason;
 
 
