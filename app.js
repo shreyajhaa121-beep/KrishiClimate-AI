@@ -333,10 +333,10 @@ const riskDescriptionElement =
 
 riskSignalsElement.innerHTML = "";
 
-if (todayRainfall >= 20) {
+ if(todayRainfall >= 20) {
     riskSignalsElement.innerHTML +=
-        "<li>🌧️ Today's rainfall signal: " + todayRainfall + " mm</li>";
-}
+        "<li>🌧️ Today's forecast rainfall: " + todayRainfall + " mm</li>";
+ }
 
 if (todayProbability >= 60) {
     riskSignalsElement.innerHTML +=
