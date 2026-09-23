@@ -250,7 +250,10 @@ else if (irrigation === "limited" && todayRainfall < 5) {
 const riskDescriptionElement =
     document.getElementById("riskReason");
 riskLevelElement.textContent = riskLevel;
-        
+
+riskLevelElement.className =
+    "risk-level " + riskLevel.toLowerCase();
+
 riskDescriptionElement.textContent = riskReason;
  // ------------------------------
 // DYNAMIC RECOMMENDED ACTION
