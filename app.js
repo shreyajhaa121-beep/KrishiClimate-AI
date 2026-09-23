@@ -60,6 +60,18 @@ analyzeButton.addEventListener("click", async function () {
 
     const soil =
         document.getElementById("soil").value;
+    
+    // Save farmer profile
+localStorage.setItem(
+    "krishiClimateProfile",
+    JSON.stringify({
+        district: district,
+        village: village,
+        cropStage: cropStage,
+        irrigation: irrigation,
+        soil: soil
+    })
+);
 
 
     // Show farmer information
