@@ -236,65 +236,92 @@ analyzeButton.addEventListener("click", async function () {
  // ------------------------------
 // DYNAMIC CLIMATE RISK ENGINE
 // ------------------------------
-
 let riskLevel = "LOW";
 let riskReason = "No major climate signal detected.";
 
-        if (
+// ------------------------------
+// COMBINED CLIMATE RISK ENGINE
+// ------------------------------
+
+// 1. HIGH: Strong rainfall signal
+if (
     (todayRainfall >= 20 && todayProbability >= 70) ||
     forecastHighRainRisk
 ) {
     riskLevel = "HIGH";
-    riskReason =
-        "High rainfall signal detected. Monitor the field for excess water and drainage conditions.";
+
+    if (soil === "clay") {
+        riskReason =
+            "High rainfall signal detected. Clay soil can retain more water, increasing the need to monitor drainage and waterlogging.";
+    }
+    else if (irrigation === "limited") {
+        riskReason =
+            "High rainfall signal detected while irrigation availability is limited. Monitor drainage and avoid unnecessary irrigation.";
+    }
+    else {
+        riskReason =
+            "High rainfall signal detected. Monitor the field for excess water and drainage conditions.";
+    }
 }
-            else if (
-    (
-        todayRainfall >= 10 &&
-        todayProbability >= 60
-    ) ||
-    (
-        daily.precipitation_sum.some(function (rain, index) {
-            return (
-                rain >= 10 &&
-                daily.precipitation_probability_max[index] >= 60
-            );
-        })
-    )
-    &&
-    (cropStage === "vegetative" || cropStage === "flowering")
-) {
-    riskLevel = "MODERATE";
-    riskReason =
-        "Elevated rainfall signal detected during an active crop-growth stage. Monitor field moisture and drainage conditions.";
-            }
+
+// 2. MODERATE: Water stress
 else if (
-    todayRainfall >= 10 &&
-    todayProbability >= 60 &&
-    (cropStage === "vegetative" || cropStage === "flowering")
+    irrigation === "limited" &&
+    todayRainfall < 5
 ) {
-    riskLevel = "MODERATE";
-    riskReason =
-        "Elevated rainfall signal during an active crop-growth stage. Monitor field moisture and drainage conditions.";
-}
-else if (irrigation === "limited" && todayRainfall < 5) {
     riskLevel = "MODERATE";
     riskReason =
         "Limited irrigation availability combined with low rainfall may increase water stress.";
 }
+
+// 3. MODERATE: Rainfall during active crop stage
+else if (
+    (
+        todayRainfall >= 10 &&
+        todayProbability >= 60
+    ) ||
+    daily.precipitation_sum.some(function (rain, index) {
+        return (
+            rain >= 10 &&
+            daily.precipitation_probability_max[index] >= 60
+        );
+    })
+) {
+    if (
+        cropStage === "vegetative" ||
+        cropStage === "flowering"
+    ) {
+        riskLevel = "MODERATE";
+        riskReason =
+            "Elevated rainfall signal detected during an active crop-growth stage. Monitor field moisture and drainage conditions.";
+    }
+    else {
+        riskLevel = "MODERATE";
+        riskReason =
+            "Elevated rainfall signal detected. Monitor field moisture and drainage conditions.";
+    }
+}
+
+// 4. MODERATE: Temperature stress
 else if (
     todayTemperature >= 35 &&
-    (cropStage === "vegetative" || cropStage === "flowering")
+    (
+        cropStage === "vegetative" ||
+        cropStage === "flowering"
+    )
 ) {
     riskLevel = "MODERATE";
     riskReason =
         "Elevated temperature signal detected during an active crop-growth stage. Monitor crop and water conditions.";
 }
+
+// 5. LOW: No significant signal
 else {
     riskLevel = "LOW";
     riskReason =
         "No major rainfall, temperature, or water-availability risk signal detected from the current inputs.";
 }
+
         const riskLevelElement =
     document.getElementById("riskLevel");
 
