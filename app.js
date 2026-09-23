@@ -35,7 +35,6 @@ analyzeButton.addEventListener("click", async function () {
 
     const district = document.getElementById("district").value;
     const village = document.getElementById("village").value;
-    const crop = document.getElementById("crop").value;
     const cropStage = document.getElementById("cropStage").value;
     const irrigation = document.getElementById("irrigation").value;
     const soil = document.getElementById("soil").value;
@@ -49,8 +48,19 @@ analyzeButton.addEventListener("click", async function () {
     resultSoil.textContent = soil || "Not provided";
 
 
+    // Open Analysis Page immediately
+    profilePage.style.display = "none";
+    analysisPage.style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+
     // Find weather location coordinates
     weatherLocation.textContent = "Finding location...";
+
 
     try {
 
@@ -61,6 +71,12 @@ analyzeButton.addEventListener("click", async function () {
             encodeURIComponent(locationQuery) +
             "&count=5&language=en&format=json&countryCode=IN"
         );
+
+
+        if (!geoResponse.ok) {
+            throw new Error("Geocoding request failed");
+        }
+
 
         const geoData = await geoResponse.json();
 
@@ -81,28 +97,27 @@ analyzeButton.addEventListener("click", async function () {
             location.name + ", " + location.admin1;
 
 
-        // Save coordinates for the weather step
+        // Save coordinates for next step
         const latitude = location.latitude;
         const longitude = location.longitude;
 
-        console.log("Weather coordinates:", latitude, longitude);
 
+        console.log(
+            "Weather coordinates:",
+            latitude,
+            longitude
+        );
 
-        // Open Analysis Page
-        profilePage.style.display = "none";
-        analysisPage.style.display = "block";
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
 
     } catch (error) {
 
         weatherLocation.textContent =
-            "Unable to find weather location";
+            "Weather location unavailable";
 
-        console.error("Geocoding error:", error);
+        console.error(
+            "Geocoding error:",
+            error
+        );
 
     }
 
