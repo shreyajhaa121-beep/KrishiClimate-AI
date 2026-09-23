@@ -252,6 +252,30 @@ const riskDescriptionElement =
 riskLevelElement.textContent = riskLevel;
         
 riskDescriptionElement.textContent = riskReason;
+ // ------------------------------
+// DYNAMIC RECOMMENDED ACTION
+// ------------------------------
+
+const recommendedAction =
+    document.getElementById("recommendedAction");
+
+let actionText =
+    "Monitor field conditions and upcoming weather before making irrigation decisions.";
+
+if (riskLevel === "HIGH") {
+    actionText =
+        "High rainfall signal detected. Check field drainage and avoid unnecessary irrigation while monitoring for waterlogging.";
+}
+else if (riskLevel === "MODERATE" && todayRainfall >= 10) {
+    actionText =
+        "Rainfall signal is elevated. Monitor field moisture and drainage conditions before adding irrigation.";
+}
+else if (riskLevel === "MODERATE" && irrigation === "limited") {
+    actionText =
+        "Irrigation availability is limited. Monitor soil moisture and upcoming rainfall before deciding whether irrigation is needed.";
+}
+
+recommendedAction.textContent = actionText;
 
 
         weatherTemperature.textContent =
