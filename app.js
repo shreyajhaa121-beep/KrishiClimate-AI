@@ -545,6 +545,54 @@ actionIrrigation.addEventListener(
     "change",
     updateActionProgress
 );
+
+        // Save action progress
+function saveActionProgress() {
+    localStorage.setItem(
+        "krishiClimateActions",
+        JSON.stringify({
+            drainage: actionDrainage.checked,
+            moisture: actionMoisture.checked,
+            irrigation: actionIrrigation.checked
+        })
+    );
+}
+
+// Load saved action progress
+function loadActionProgress() {
+
+    const savedActions =
+        localStorage.getItem("krishiClimateActions");
+
+    if (!savedActions) {
+        return;
+    }
+
+    const actions = JSON.parse(savedActions);
+
+    actionDrainage.checked = actions.drainage;
+    actionMoisture.checked = actions.moisture;
+    actionIrrigation.checked = actions.irrigation;
+
+    updateActionProgress();
+}
+
+actionDrainage.addEventListener(
+    "change",
+    saveActionProgress
+);
+
+actionMoisture.addEventListener(
+    "change",
+    saveActionProgress
+);
+
+actionIrrigation.addEventListener(
+    "change",
+    saveActionProgress
+);
+
+loadActionProgress();
         
 
         weatherTemperature.textContent =
