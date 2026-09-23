@@ -232,17 +232,29 @@ analyzeButton.addEventListener("click", async function () {
 let riskLevel = "LOW";
 let riskReason = "No major climate signal detected.";
 
-if (todayRainfall >= 20 && todayProbability >= 70) {
+ if (todayRainfall >= 20 && todayProbability >= 70) {
     riskLevel = "HIGH";
-    riskReason = "High rainfall signal detected. Monitor the field for excess water and drainage conditions.";
-} 
-else if (todayRainfall >= 10 && todayProbability >= 60) {
+    riskReason =
+        "High rainfall signal detected. Monitor the field for excess water and drainage conditions.";
+}
+else if (
+    todayRainfall >= 10 &&
+    todayProbability >= 60 &&
+    (cropStage === "vegetative" || cropStage === "flowering")
+) {
     riskLevel = "MODERATE";
-    riskReason = "Moderate-to-high rainfall signal detected. Monitor field moisture and upcoming rainfall.";
-} 
+    riskReason =
+        "Elevated rainfall signal during an active crop-growth stage. Monitor field moisture and drainage conditions.";
+}
 else if (irrigation === "limited" && todayRainfall < 5) {
     riskLevel = "MODERATE";
-    riskReason = "Limited irrigation availability combined with low rainfall may increase water stress.";
+    riskReason =
+        "Limited irrigation availability combined with low rainfall may increase water stress.";
+}
+else {
+    riskLevel = "LOW";
+    riskReason =
+        "No major rainfall or water-availability risk signal detected from the current inputs.";
 }
         const riskLevelElement =
     document.getElementById("riskLevel");
