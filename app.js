@@ -335,7 +335,7 @@ riskSignalsElement.innerHTML = "";
 
 if (todayRainfall >= 20) {
     riskSignalsElement.innerHTML +=
-        "<li>🌧️ Rainfall signal: " + todayRainfall + " mm</li>";
+        "<li>🌧️ Today's rainfall signal: " + todayRainfall + " mm</li>";
 }
 
 if (todayProbability >= 60) {
@@ -349,9 +349,8 @@ if (
     })
 ) {
     riskSignalsElement.innerHTML +=
-        "<li>📅 Heavy rainfall appears in the forecast</li>";
+        "<li>📅 Heavy rainfall appears in the upcoming forecast</li>";
 }
-
 if (
     cropStage === "vegetative" ||
     cropStage === "flowering"
