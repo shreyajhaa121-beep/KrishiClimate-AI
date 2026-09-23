@@ -27,11 +27,10 @@ const resultCrop = document.getElementById("resultCrop");
 const resultStage = document.getElementById("resultStage");
 const resultIrrigation = document.getElementById("resultIrrigation");
 const resultSoil = document.getElementById("resultSoil");
-const weatherLocation = document.getElementById("weatherLocation");
 
 
 // Analyze Farmer Profile
-analyzeButton.addEventListener("click", async function () {
+analyzeButton.addEventListener("click", function () {
 
     const district = document.getElementById("district").value;
     const village = document.getElementById("village").value;
@@ -40,7 +39,6 @@ analyzeButton.addEventListener("click", async function () {
     const soil = document.getElementById("soil").value;
 
 
-    // Show farmer information
     resultLocation.textContent = district + ", " + village;
     resultCrop.textContent = "Rice";
     resultStage.textContent = cropStage;
@@ -48,77 +46,13 @@ analyzeButton.addEventListener("click", async function () {
     resultSoil.textContent = soil || "Not provided";
 
 
-    // Open Analysis Page immediately
     profilePage.style.display = "none";
     analysisPage.style.display = "block";
+
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-
-
-    // Find weather location coordinates
-    weatherLocation.textContent = "Finding location...";
-
-
-    try {
-
-        const locationQuery = district + ", Bihar";
-
-        const geoResponse = await fetch(
-            "https://geocoding-api.open-meteo.com/v1/search?name=" +
-            encodeURIComponent(locationQuery) +
-            "&count=5&language=en&format=json&countryCode=IN"
-        );
-
-
-        if (!geoResponse.ok) {
-            throw new Error("Geocoding request failed");
-        }
-
-
-        const geoData = await geoResponse.json();
-
-
-        if (!geoData.results || geoData.results.length === 0) {
-
-            weatherLocation.textContent =
-                "Location not found";
-
-            return;
-        }
-
-
-        const location = geoData.results[0];
-
-
-        weatherLocation.textContent =
-            location.name + ", " + location.admin1;
-
-
-        // Save coordinates for next step
-        const latitude = location.latitude;
-        const longitude = location.longitude;
-
-
-        console.log(
-            "Weather coordinates:",
-            latitude,
-            longitude
-        );
-
-
-    } catch (error) {
-
-        weatherLocation.textContent =
-            "Weather location unavailable";
-
-        console.error(
-            "Geocoding error:",
-            error
-        );
-
-    }
 
 });
