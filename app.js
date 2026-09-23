@@ -251,10 +251,18 @@ else if (irrigation === "limited" && todayRainfall < 5) {
     riskReason =
         "Limited irrigation availability combined with low rainfall may increase water stress.";
 }
+else if (
+    todayTemperature >= 35 &&
+    (cropStage === "vegetative" || cropStage === "flowering")
+) {
+    riskLevel = "MODERATE";
+    riskReason =
+        "Elevated temperature signal detected during an active crop-growth stage. Monitor crop and water conditions.";
+}
 else {
     riskLevel = "LOW";
     riskReason =
-        "No major rainfall or water-availability risk signal detected from the current inputs.";
+        "No major rainfall, temperature, or water-availability risk signal detected from the current inputs.";
 }
         const riskLevelElement =
     document.getElementById("riskLevel");
