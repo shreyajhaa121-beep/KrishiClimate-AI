@@ -318,7 +318,7 @@ let actionText =
 
 if (riskLevel === "HIGH") {
     actionText =
-        "High rainfall signal detected. Check field drainage and avoid unnecessary irrigation while monitoring for waterlogging.";
+        "Heavy rainfall is expected. Check field drainage before the rainfall period and avoid unnecessary irrigation if the field is already adequately moist.";
 }
 else if (riskLevel === "MODERATE" && todayRainfall >= 10) {
     actionText =
