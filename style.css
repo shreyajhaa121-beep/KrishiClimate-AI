@@ -298,3 +298,83 @@ footer {
         font-size: 30px;
     }
 }
+
+
+/* RISK ANALYSIS */
+
+.analysis-page {
+    display: none;
+    min-height: 650px;
+    padding: 60px 7%;
+    background: #f5f8f3;
+}
+
+.analysis-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.analysis-container h1 {
+    margin-bottom: 15px;
+}
+
+.analysis-description {
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+.farm-summary,
+.risk-card,
+.action-card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.farm-summary h2,
+.risk-card h2,
+.action-card h2 {
+    margin-bottom: 18px;
+}
+
+.farm-summary p {
+    margin: 10px 0;
+}
+
+.risk-level {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    background: #fff3cd;
+    color: #856404;
+}
+
+.risk-card p,
+.action-card p {
+    line-height: 1.6;
+}
+
+
+/* MOBILE RISK ANALYSIS */
+
+@media (max-width: 600px) {
+
+    .analysis-page {
+        padding: 40px 5%;
+    }
+
+    .analysis-container h1 {
+        font-size: 28px;
+    }
+
+    .farm-summary,
+    .risk-card,
+    .action-card {
+        padding: 20px;
+    }
+
+}
