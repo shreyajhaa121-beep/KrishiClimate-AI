@@ -378,3 +378,21 @@ footer {
     }
 
 }
+/* WEATHER SIGNALS */
+
+.weather-card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.weather-card h2 {
+    margin-bottom: 18px;
+}
+
+.weather-card p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
