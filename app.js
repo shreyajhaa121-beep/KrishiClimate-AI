@@ -224,23 +224,27 @@ analyzeButton.addEventListener("click", async function () {
 
         const todayProbability =
             daily.precipitation_probability_max[0];
- const forecastMaxRainfall =
-    Math.max(...daily.precipitation_sum);
 
-const forecastMaxProbability =
-    Math.max(...daily.precipitation_probability_max);
-
-        // ------------------------------
+        const forecastHighRainRisk =
+    daily.precipitation_sum.some(function (rain, index) {
+        return (
+            rain >= 20 &&
+            daily.precipitation_probability_max[index] >= 70
+        );
+    });
+        
+ // ------------------------------
 // DYNAMIC CLIMATE RISK ENGINE
 // ------------------------------
 
 let riskLevel = "LOW";
 let riskReason = "No major climate signal detected.";
 
- if (
+        if (
     (todayRainfall >= 20 && todayProbability >= 70) ||
-    (forecastMaxRainfall >= 20 && forecastMaxProbability >= 70)
+    forecastHighRainRisk
 ) {
+
     riskLevel = "HIGH";
     riskReason =
         "High rainfall signal detected. Monitor the field for excess water and drainage conditions.";
