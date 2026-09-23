@@ -16,3 +16,16 @@ startButton.addEventListener("click", function () {
     });
 
 });
+
+const analyzeButton = document.getElementById("analyzeButton");
+
+
+// Analyze Farmer Profile
+analyzeButton.addEventListener("click", function () {
+
+    alert(
+        "Farm profile received successfully! 🌾\n\n" +
+        "Next: KrishiClimate AI will analyze climate and crop risks."
+    );
+
+});
