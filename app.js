@@ -30,7 +30,7 @@ const resultSoil = document.getElementById("resultSoil");
 
 
 // Analyze Farmer Profile
-analyzeButton.addEventListener("click", function () {
+analyzeButton.addEventListener("click", async function () {
 
     const district = document.getElementById("district").value;
     const village = document.getElementById("village").value;
@@ -38,6 +38,29 @@ analyzeButton.addEventListener("click", function () {
     const cropStage = document.getElementById("cropStage").value;
     const irrigation = document.getElementById("irrigation").value;
     const soil = document.getElementById("soil").value;
+
+    // Find weather location coordinates
+const locationQuery = village + ", " + district + ", Bihar";
+
+const geoResponse = await fetch(
+    "https://geocoding-api.open-meteo.com/v1/search?name=" +
+    encodeURIComponent(locationQuery) +
+    "&count=5&language=en&format=json&countryCode=IN"
+);
+
+const geoData = await geoResponse.json();
+
+if (!geoData.results || geoData.results.length === 0) {
+    document.getElementById("weatherLocation").textContent =
+        "Location not found";
+
+    return;
+}
+
+const location = geoData.results[0];
+
+document.getElementById("weatherLocation").textContent =
+    location.name + ", " + location.admin1;
 
     resultLocation.textContent = district + ", " + village;
     resultCrop.textContent = "Rice";
