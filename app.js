@@ -327,6 +327,53 @@ else {
 
 const riskDescriptionElement =
     document.getElementById("riskReason");
+
+        const riskSignalsElement =
+    document.getElementById("riskSignals");
+
+riskSignalsElement.innerHTML = "";
+
+if (todayRainfall >= 20) {
+    riskSignalsElement.innerHTML +=
+        "<li>🌧️ Rainfall signal: " + todayRainfall + " mm</li>";
+}
+
+if (todayProbability >= 60) {
+    riskSignalsElement.innerHTML +=
+        "<li>☔ Rain probability: " + todayProbability + "%</li>";
+}
+
+if (
+    daily.precipitation_sum.some(function (rain) {
+        return rain >= 20;
+    })
+) {
+    riskSignalsElement.innerHTML +=
+        "<li>📅 Heavy rainfall appears in the forecast</li>";
+}
+
+if (
+    cropStage === "vegetative" ||
+    cropStage === "flowering"
+) {
+    riskSignalsElement.innerHTML +=
+        "<li>🌱 Active crop-growth stage: " + cropStage + "</li>";
+}
+
+if (soil === "clay") {
+    riskSignalsElement.innerHTML +=
+        "<li>🪨 Clay soil may retain more water</li>";
+}
+
+if (irrigation === "limited") {
+    riskSignalsElement.innerHTML +=
+        "<li>💧 Irrigation availability is limited</li>";
+}
+
+if (riskSignalsElement.innerHTML === "") {
+    riskSignalsElement.innerHTML =
+        "<li>✅ No major climate signal detected</li>";
+}
 riskLevelElement.textContent = riskLevel;
 
 riskLevelElement.className =
