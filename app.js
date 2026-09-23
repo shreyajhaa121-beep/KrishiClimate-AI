@@ -225,6 +225,12 @@ analyzeButton.addEventListener("click", async function () {
         const todayProbability =
             daily.precipitation_probability_max[0];
 
+        const forecastMaxRainfall =
+    Math.max(...daily.precipitation_sum);
+
+const forecastMaxProbability =
+    Math.max(...daily.precipitation_probability_max);
+
         // ------------------------------
 // DYNAMIC CLIMATE RISK ENGINE
 // ------------------------------
