@@ -759,21 +759,91 @@ if (savedAnalysis) {
         analysis.avoid || "";
 }
 
-// Step 5K: Open saved analysis after refresh
+// Step 5K: Automatically open saved analysis after refresh
 window.addEventListener("load", function () {
 
     const savedSession =
         localStorage.getItem("krishiClimateAnalysis");
 
-    if (savedSession) {
-
-        landingPage.style.display = "none";
-        profilePage.style.display = "none";
-        analysisPage.style.display = "block";
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+    if (!savedSession) {
+        return;
     }
+
+    const analysis = JSON.parse(savedSession);
+
+    // Get analysis elements again
+    const savedRiskLevel =
+        document.getElementById("riskLevel");
+
+    const savedRiskReason =
+        document.getElementById("riskReason");
+
+    const savedRiskSignals =
+        document.getElementById("riskSignals");
+
+    const savedRecommendedAction =
+        document.getElementById("recommendedAction");
+
+    const savedDoNow =
+        document.getElementById("doNowAction");
+
+    const savedMonitor =
+        document.getElementById("monitorAction");
+
+    const savedAvoid =
+        document.getElementById("avoidAction");
+
+    // Restore weather data
+    weatherLocation.textContent =
+        analysis.weatherLocation || "Unavailable";
+
+    weatherTemperature.textContent =
+        analysis.temperature || "Unavailable";
+
+    weatherRainfall.textContent =
+        analysis.rainfall || "Unavailable";
+
+    weatherProbability.textContent =
+        analysis.probability || "Unavailable";
+
+    weatherForecast.textContent =
+        analysis.forecast || "Unavailable";
+
+    // Restore risk
+    savedRiskLevel.textContent =
+        analysis.riskLevel || "LOW";
+
+    savedRiskLevel.className =
+        "risk-level " +
+        (analysis.riskLevel || "LOW").toLowerCase();
+
+    savedRiskReason.textContent =
+        analysis.riskReason || "";
+
+    savedRiskSignals.innerHTML =
+        analysis.riskSignals ||
+        "<li>✅ No major climate signal detected</li>";
+
+    // Restore actions
+    savedRecommendedAction.textContent =
+        analysis.recommendedAction || "";
+
+    savedDoNow.textContent =
+        analysis.doNow || "";
+
+    savedMonitor.textContent =
+        analysis.monitor || "";
+
+    savedAvoid.textContent =
+        analysis.avoid || "";
+
+    // Open analysis page automatically
+    landingPage.style.display = "none";
+    profilePage.style.display = "none";
+    analysisPage.style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 });
