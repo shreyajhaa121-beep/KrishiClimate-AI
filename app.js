@@ -708,56 +708,6 @@ if (savedProfile) {
         profile.soil || "";
 }
 
-// Restore saved analysis
-const savedAnalysis =
-    localStorage.getItem("krishiClimateAnalysis");
-
-if (savedAnalysis) {
-
-    const analysis = JSON.parse(savedAnalysis);
-
-    weatherLocation.textContent =
-        analysis.weatherLocation || "Unavailable";
-
-    weatherTemperature.textContent =
-        analysis.temperature || "Unavailable";
-
-    weatherRainfall.textContent =
-        analysis.rainfall || "Unavailable";
-
-    weatherProbability.textContent =
-        analysis.probability || "Unavailable";
-
-    weatherForecast.textContent =
-        analysis.forecast || "Unavailable";
-
-    riskLevelElement.textContent =
-        analysis.riskLevel || "LOW";
-
-    riskLevelElement.className =
-        "risk-level " +
-        (analysis.riskLevel || "LOW").toLowerCase();
-
-    riskDescriptionElement.textContent =
-        analysis.riskReason || "";
-
-    riskSignalsElement.innerHTML =
-        analysis.riskSignals ||
-        "<li>✅ No major climate signal detected</li>";
-
-    recommendedAction.textContent =
-        analysis.recommendedAction || "";
-
-    doNowAction.textContent =
-        analysis.doNow || "";
-
-    monitorAction.textContent =
-        analysis.monitor || "";
-
-    avoidAction.textContent =
-        analysis.avoid || "";
-}
-
 // Step 5K: Automatically open saved analysis after refresh
 window.addEventListener("load", function () {
 
@@ -847,15 +797,3 @@ window.addEventListener("load", function () {
     });
 });
 
-// TEST: Check whether analysis is saved
-window.addEventListener("load", function () {
-    const testData =
-        localStorage.getItem("krishiClimateAnalysis");
-
-    if (testData) {
-        console.log("✅ Analysis data FOUND");
-        console.log(testData);
-    } else {
-        console.log("❌ Analysis data NOT FOUND");
-    }
-});
