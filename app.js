@@ -527,19 +527,57 @@ function updateActionProgress() {
 
     let completed = 0;
 
-    if (actionDrainage.checked) {
-        completed++;
-    }
-
-    if (actionMoisture.checked) {
-        completed++;
-    }
-
-    if (actionIrrigation.checked) {
-        completed++;
-    }
+    if (actionDrainage.checked) completed++;
+    if (actionMoisture.checked) completed++;
+    if (actionIrrigation.checked) completed++;
 
     actionProgress.textContent =
+        completed + "/3 actions completed";
+
+    // Step 5L: Update impact dashboard
+    const waterImpact =
+        document.getElementById("waterImpact");
+
+    const energyImpact =
+        document.getElementById("energyImpact");
+
+    const climateActionImpact =
+        document.getElementById("climateActionImpact");
+
+    const impactScore =
+        document.getElementById("impactScore");
+
+    // Water impact
+    if (actionIrrigation.checked) {
+        waterImpact.textContent =
+            "Irrigation decision reviewed — unnecessary irrigation can be avoided when sufficient moisture or rainfall is available.";
+    } else {
+        waterImpact.textContent =
+            "Complete the irrigation review to track water-management action.";
+    }
+
+    // Energy impact
+    if (actionIrrigation.checked) {
+        energyImpact.textContent =
+            "Irrigation planning completed — this can help avoid unnecessary pump operation.";
+    } else {
+        energyImpact.textContent =
+            "Energy impact will be tracked after the irrigation decision is reviewed.";
+    }
+
+    // Climate action
+    if (completed === 3) {
+        climateActionImpact.textContent =
+            "All recommended monitoring actions completed.";
+    } else if (completed > 0) {
+        climateActionImpact.textContent =
+            completed + " climate action(s) completed. Continue monitoring the farm.";
+    } else {
+        climateActionImpact.textContent =
+            "Complete recommended actions to track climate-response progress.";
+    }
+
+    impactScore.textContent =
         completed + "/3 actions completed";
 }
 
