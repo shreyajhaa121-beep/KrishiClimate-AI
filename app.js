@@ -758,3 +758,15 @@ if (savedAnalysis) {
     avoidAction.textContent =
         analysis.avoid || "";
 }
+
+// Restore analysis page if a saved analysis exists
+if (savedAnalysis) {
+    landingPage.style.display = "none";
+    profilePage.style.display = "none";
+    analysisPage.style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
