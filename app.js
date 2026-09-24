@@ -847,3 +847,16 @@ window.addEventListener("load", function () {
         behavior: "smooth"
     });
 });
+
+// TEST: Check whether analysis is saved
+window.addEventListener("load", function () {
+    const testData =
+        localStorage.getItem("krishiClimateAnalysis");
+
+    if (testData) {
+        console.log("✅ Analysis data FOUND");
+        console.log(testData);
+    } else {
+        console.log("❌ Analysis data NOT FOUND");
+    }
+});
