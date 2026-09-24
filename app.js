@@ -458,25 +458,6 @@ else if (riskLevel === "MODERATE" && irrigation === "limited") {
 
 recommendedAction.textContent = actionText;
 
-        // Step 5K: Save complete analysis result
-localStorage.setItem(
-    "krishiClimateAnalysis",
-    JSON.stringify({
-        weatherLocation: weatherLocation.textContent,
-        temperature: weatherTemperature.textContent,
-        rainfall: weatherRainfall.textContent,
-        probability: weatherProbability.textContent,
-        forecast: weatherForecast.textContent,
-        riskLevel: riskLevelElement.textContent,
-        riskReason: riskDescriptionElement.textContent,
-        riskSignals: riskSignalsElement.innerHTML,
-        recommendedAction: recommendedAction.textContent,
-        doNow: doNowAction.textContent,
-        monitor: monitorAction.textContent,
-        avoid: avoidAction.textContent
-    })
-);
-
         // Step 5J: Action Priority
 let doNowText =
     "Check the field condition and follow the latest weather signal.";
@@ -656,8 +637,26 @@ loadActionProgress();
                 .join(" | ");
 
 
-        weatherForecast.textContent =
-            forecastText;
+        weatherForecast.textContent = forecastText;
+
+// Step 5K: Save complete analysis result
+localStorage.setItem(
+    "krishiClimateAnalysis",
+    JSON.stringify({
+        weatherLocation: weatherLocation.textContent,
+        temperature: weatherTemperature.textContent,
+        rainfall: weatherRainfall.textContent,
+        probability: weatherProbability.textContent,
+        forecast: weatherForecast.textContent,
+        riskLevel: riskLevelElement.textContent,
+        riskReason: riskDescriptionElement.textContent,
+        riskSignals: riskSignalsElement.innerHTML,
+        recommendedAction: recommendedAction.textContent,
+        doNow: doNowAction.textContent,
+        monitor: monitorAction.textContent,
+        avoid: avoidAction.textContent
+    })
+);
 
 
     } catch (error) {
