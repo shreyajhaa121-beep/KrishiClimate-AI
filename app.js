@@ -664,3 +664,29 @@ loadActionProgress();
     }
 
 });
+
+
+// Restore saved farmer profile
+const savedProfile =
+    localStorage.getItem("krishiClimateProfile");
+
+if (savedProfile) {
+
+    const profile = JSON.parse(savedProfile);
+
+    document.getElementById("district").value =
+        profile.district || "";
+
+    document.getElementById("village").value =
+        profile.village || "";
+
+    document.getElementById("cropStage").value =
+        profile.cropStage || "";
+
+    document.getElementById("irrigation").value =
+        profile.irrigation || "";
+
+    document.getElementById("soil").value =
+        profile.soil || "";
+}
+
