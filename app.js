@@ -759,14 +759,21 @@ if (savedAnalysis) {
         analysis.avoid || "";
 }
 
-// Restore analysis page if a saved analysis exists
-if (savedAnalysis) {
-    landingPage.style.display = "none";
-    profilePage.style.display = "none";
-    analysisPage.style.display = "block";
+// Step 5K: Open saved analysis after refresh
+window.addEventListener("load", function () {
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
+    const savedSession =
+        localStorage.getItem("krishiClimateAnalysis");
+
+    if (savedSession) {
+
+        landingPage.style.display = "none";
+        profilePage.style.display = "none";
+        analysisPage.style.display = "block";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+});
