@@ -747,17 +747,6 @@ if (savedProfile) {
         profile.soil || "";
 }
 
-// Step 5K: Automatically open saved analysis after refresh
-window.addEventListener("load", function () {
-
-    const savedSession =
-        localStorage.getItem("krishiClimateAnalysis");
-
-    if (!savedSession) {
-        return;
-    }
-
-    const analysis = JSON.parse(savedSession);
 
     // Get analysis elements again
     const savedRiskLevel =
