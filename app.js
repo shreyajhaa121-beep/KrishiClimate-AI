@@ -748,28 +748,6 @@ if (savedProfile) {
 }
 
 
-    // Get analysis elements again
-    const savedRiskLevel =
-        document.getElementById("riskLevel");
-
-    const savedRiskReason =
-        document.getElementById("riskReason");
-
-    const savedRiskSignals =
-        document.getElementById("riskSignals");
-
-    const savedRecommendedAction =
-        document.getElementById("recommendedAction");
-
-    const savedDoNow =
-        document.getElementById("doNowAction");
-
-    const savedMonitor =
-        document.getElementById("monitorAction");
-
-    const savedAvoid =
-        document.getElementById("avoidAction");
-
     // Restore weather data
     weatherLocation.textContent =
         analysis.weatherLocation || "Unavailable";
