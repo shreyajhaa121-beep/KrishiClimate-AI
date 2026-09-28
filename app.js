@@ -524,7 +524,6 @@ const actionProgress =
     document.getElementById("actionProgress");
 
 function updateActionProgress() {
-
     let completed = 0;
 
     if (actionDrainage.checked) completed++;
@@ -534,7 +533,7 @@ function updateActionProgress() {
     actionProgress.textContent =
         completed + "/3 actions completed";
 
-    // Step 5L: Update impact dashboard
+    // Step 5L Part 2: Update impact dashboard
     const waterImpact =
         document.getElementById("waterImpact");
 
@@ -547,36 +546,38 @@ function updateActionProgress() {
     const impactScore =
         document.getElementById("impactScore");
 
-    // Water impact
+    // Water management
     if (actionIrrigation.checked) {
         waterImpact.textContent =
-            "Irrigation decision reviewed — unnecessary irrigation can be avoided when sufficient moisture or rainfall is available.";
+            "Irrigation decision reviewed. Check rainfall and field moisture before irrigation to help avoid unnecessary water use.";
     } else {
         waterImpact.textContent =
-            "Complete the irrigation review to track water-management action.";
+            "Review the irrigation decision to track water-management progress.";
     }
 
-    // Energy impact
+    // Energy management
     if (actionIrrigation.checked) {
         energyImpact.textContent =
-            "Irrigation planning completed — this can help avoid unnecessary pump operation.";
+            "Irrigation planning reviewed. This may help avoid unnecessary pump operation when irrigation is not needed.";
     } else {
         energyImpact.textContent =
-            "Energy impact will be tracked after the irrigation decision is reviewed.";
+            "Review irrigation needs before tracking pump-energy management.";
     }
 
-    // Climate action
+    // Climate action progress
     if (completed === 3) {
         climateActionImpact.textContent =
-            "All recommended monitoring actions completed.";
+            "All 3 farm-monitoring actions completed.";
     } else if (completed > 0) {
         climateActionImpact.textContent =
-            completed + " climate action(s) completed. Continue monitoring the farm.";
+            completed +
+            " of 3 farm-monitoring actions completed.";
     } else {
         climateActionImpact.textContent =
-            "Complete recommended actions to track climate-response progress.";
+            "Complete the recommended actions to track progress.";
     }
 
+    // Impact summary
     impactScore.textContent =
         completed + "/3 actions completed";
 }
